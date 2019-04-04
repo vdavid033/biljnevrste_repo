@@ -1,1 +1,0 @@
-# GUI - unos biljne vrste
