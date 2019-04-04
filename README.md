@@ -1,7 +1,6 @@
 # Biljne vrste
 
-
-Aplikacija je namjenjena studentima i nastavnicima na studiju Agroturizma na Veleučilištu u Rijeci za potrebe nastave kao dodatan nastavni materijal. 
+Ova aplikacija je namjenjena studentima i nastavnicima na studiju Agroturizma na Veleučilištu u Rijeci za potrebe nastave kao dodatan nastavni materijal. 
 
 Aplikacija sadrži popis biljnih vrsta s latinskim i hrvatskim nazivima, karakteristike pojedine biljne vrste (uporabne dijelove, bioaktivne tvari), te slike biljnih vrsta i njihovih dijelova.  
 

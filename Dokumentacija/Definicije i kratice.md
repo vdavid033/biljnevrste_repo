@@ -1,7 +1,6 @@
 # Definicije i kratice
 
- 
-**Uporabni dio** - dio biljke koji sadrži bioaktivnu tvar
+ **Uporabni dio** - dio biljke koji sadrži bioaktivnu tvar
         herba (nadzemni dio)
         korjen
         stabljika
