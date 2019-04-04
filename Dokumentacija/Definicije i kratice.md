@@ -1,13 +1,14 @@
 # Definicije i kratice
 
  **Uporabni dio** - dio biljke koji sadrži bioaktivnu tvar
-        herba (nadzemni dio)
-        korjen
-        stabljika
-        cvijet
-        plod
-        peteljka
-        sjeme
+  * herba (nadzemni dio)
+  * korjen
+  * stabljika
+  * cvijet
+  * plod
+  * peteljka
+  * sjeme
+
 **Bioaktivna tvar** - kemijska tvar koja se može iskoristiti (sirovina)
 
  
