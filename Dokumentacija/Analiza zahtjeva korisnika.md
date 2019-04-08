@@ -1,4 +1,4 @@
-# Analiza zahtjeva korisnika
+﻿# Analiza zahtjeva korisnika
 
 ## Akteri
 
@@ -31,5 +31,6 @@
 * responzivna web aplikacija
 * unos i prikaz veće količine slika dobre kvalitete (smještaj datoteka)
 
+Test
 
 
