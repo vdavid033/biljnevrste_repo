@@ -6,6 +6,29 @@ git clone https://github.com/vdavid033/biljnevrste_repo.git
 
 ```
 ## Operating
+Unos podataka o biljnim vrstama:
+
+Prof. klikne na unos biljaka
+
+Unosi atribute :
+
+hrvatski naziv
+sinonim za hrvatski naziv
+rod
+vrsta
+podvrsta
+varijetet
+sistematicar
+Odabir postojece i/ili unos nove botanicke porodice (latinski i hrvatski naziv)
+Odabir i/ili unos novog uporabnog dijela
+Unos i/ili dodavanje nove bio aktivne tvari (mogucnost više unosa - odvajanje zarezom)
+Opis biljke
+Ucitavanje slika 1-2-3-4-5:
+
+Unos opisa
+Odabir dijela biljke (i dodati za opcenito)
+Ucitaj/Cancel-X
+Spremi
 
 ## Troubleshooting
 Browse issues: https://github.com/vdavid033/biljnevrste_repo/issues/11
