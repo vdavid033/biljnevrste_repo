@@ -27,6 +27,7 @@ Opis biljke
 Ucitavanje slika 1-2-3-4-5:
 
 Unos opisa
+
 Odabir dijela biljke (i dodati za opcenito)
 Ucitaj/Cancel-X
 Spremi
