@@ -1,4 +1,4 @@
-# Mockup prozori za provjeru znanja o biljnim vrstama
+﻿# Mockup prozori za provjeru znanja o biljnim vrstama
 
 
 ![kvizMockupi](https://user-images.githubusercontent.com/48552045/55736127-ff4af080-5a22-11e9-9085-5740a3617e04.jpg)
@@ -19,3 +19,4 @@ Alternativni pravac:
 2.	Nasumično se generira pitanje prepoznavanje po hrvatskom nazivu.
 3.	Korisnik mora povezati hrvatski naziv sa točnom slikom, latinskim nazivom, botaničkom porodicom, te odabrati uporabni dio i bioaktivnu tvar.
 4.	Nastavljamo na G4.
+
