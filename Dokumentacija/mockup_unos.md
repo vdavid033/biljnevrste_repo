@@ -12,16 +12,17 @@ Prof. klikne na unos biljaka
 
 Unosi atribute :
 
-hrvatski naziv
-sinonim za hrvatski naziv
-rod
-vrsta
-podvrsta
-varijetet
-sistematicar
+hrvatski naziv,
+sinonim za hrvatski naziv,
+rod,
+vrsta,
+podvrsta,
+varijetet,
+sistematicar,
+
 Odabir postojece i/ili unos nove botanicke porodice (latinski i hrvatski naziv)
 Odabir i/ili unos novog uporabnog dijela
-Unos i/ili dodavanje nove bio aktivne tvari (mogucnost više unosa - odvajanje zarezom)
+Unos i/ili dodavanje nove bio aktivne tvari (mogucnost vise unosa - odvajanje zarezom)
 Opis biljke
 Ucitavanje slika 1-2-3-4-5:
 
