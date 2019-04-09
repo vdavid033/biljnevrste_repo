@@ -17,3 +17,5 @@ Student/ostali korisnici:
 2. Pregled podataka o biljnim vrstama
 3. Rjesavanje kvizova
 4. Pregled tocno/netocnih odgovora
+
+Povezivanje
