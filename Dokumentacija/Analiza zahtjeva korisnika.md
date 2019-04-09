@@ -32,5 +32,5 @@
 * unos i prikaz veće količine slika dobre kvalitete (smještaj datoteka)
 
 
-
+#18
 
