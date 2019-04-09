@@ -1,4 +1,4 @@
-
+﻿
 # Unos biljne vrste -Profesor
 ## Primarni pravac
 1.	Odabir na izborniku „unos biljaka“
@@ -142,4 +142,5 @@ Alternativni pravac:
 3.	Nastavljamo na G4.
 
 https://github.com/vdavid033/biljnevrste_repo/issues/14
+testtest
 
