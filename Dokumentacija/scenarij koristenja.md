@@ -141,3 +141,5 @@ Alternativni pravac:
 2.	Korisnik mora povezati naziv sa točnom slikom, latinskim nazivom,te odabrati uporabni tio i bioaktivnu tvar.
 3.	Nastavljamo na G4.
 
+https://github.com/vdavid033/biljnevrste_repo/issues/11
+
