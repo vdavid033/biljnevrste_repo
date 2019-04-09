@@ -142,6 +142,3 @@ Alternativni pravac:
 3.	Nastavljamo na G4.
 
 https://github.com/vdavid033/biljnevrste_repo/issues/14
-testtest
-
-g18
