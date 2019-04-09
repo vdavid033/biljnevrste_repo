@@ -1,5 +1,4 @@
 # Dijagram aktivnosti
-![Alt text](https://github.com/vdavid033/biljnevrste_repo/blob/master/Dokumentacija/STUDENT.jpg?raw=true "STUDENT")# Dijagram aktivnosti
-![Alt text](https://github.com/vdavid033/biljnevrste_repo/blob/master/Dokumentacija/PROFESOR.jpg?raw=true "PROFESOR")# Dijagram aktivnosti
 
-8
+![Alt text](https://user-images.githubusercontent.com/49404552/55823544-36440380-5b02-11e9-9b84-33540d6ac353.jpg?raw=true "Pregled student")# Dijagram aktivnosti
+
