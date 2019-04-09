@@ -2,7 +2,7 @@
 
 ## Pregled svih biljaka
 
-![alt image](https://moodle.srce.hr/2018-2019/pluginfile.php/2235260/mod_wiki/attachments/2164/SnippingPregledPrep.PNG?time=1554224731445)
+![alt image](https://user-images.githubusercontent.com/48434065/55734293-957d1780-5a1f-11e9-8059-8b0140843271.PNG)
 
 * Korisnik odabire opciju "Pregled biljke"
 * Korisniku se u tablici ispisuju sve biljke unesene u bazu podatka
@@ -32,7 +32,11 @@
 
 ## Odabir jedne biljne vrste
 
-![alt image](https://user-images.githubusercontent.com/49404299/55813638-646b1880-5aed-11e9-8b4a-d0be21512833.png)
+### Profesor
+![alt image](https://user-images.githubusercontent.com/48434065/55734299-98780800-5a1f-11e9-829f-cee8a59ada06.JPG)
+
+### Student
+![alt image](https://user-images.githubusercontent.com/48434065/55734301-99109e80-5a1f-11e9-87f5-0b97f042e55b.JPG)
 
 * Korisnik odabire neku biljku za pregled
 * Otvara mu se prozor u kojem se prikazuju slike biljke i informacije vezane za nju
