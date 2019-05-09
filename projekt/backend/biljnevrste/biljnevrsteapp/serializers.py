@@ -48,3 +48,4 @@ class PodvrstaSerializer(serializers.HyperlinkedModelSerializer):
 class VarijetSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Varijet
+        fields = '__all__'
