@@ -69,3 +69,4 @@ ID_biljne_vrste- FK, broj(12)
 ID_varijeta - PK, samonumeriranje, broj(12)  
 Naziv_varijeta - Tekst(100)  
 ID_podvrste - FK, broj(12)
+

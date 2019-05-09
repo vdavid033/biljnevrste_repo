@@ -52,3 +52,5 @@
   * Slike biljke 
   * Opis biljke
 * Kada je korisnik prijavljen kao profesor ponuditi će mu se mogućnost za uređivanjem i brisanjem biljke dok je prijavljen kao običan korisnik (npr. student) biti ću samo prikazane informacije o biljkama bez mogućnosti uređivanja i brisanja
+
+Kraj
