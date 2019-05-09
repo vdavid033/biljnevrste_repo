@@ -6,3 +6,4 @@
 # 		model = BiljneVrste
 # 		fields = ('id','naziv','vrsta')
 #
+

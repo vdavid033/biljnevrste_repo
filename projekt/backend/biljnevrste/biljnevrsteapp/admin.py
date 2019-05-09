@@ -4,3 +4,4 @@ from django.contrib import admin
 from .models import Biljna_vrsta
 
 admin.site.register(Biljna_vrsta)
+

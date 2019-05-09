@@ -54,3 +54,5 @@ class Varijet(models.Model):
     # char models.CharFiled(max_length=)
     # vanjski models.ForigenKey(ime_klase)
     #
+
+
