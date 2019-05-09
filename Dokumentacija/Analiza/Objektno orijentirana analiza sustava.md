@@ -1,2 +1,0 @@
-# Objektno orijentirana analiza sustava
-
