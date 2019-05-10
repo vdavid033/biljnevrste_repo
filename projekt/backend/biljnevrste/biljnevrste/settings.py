@@ -73,8 +73,12 @@ WSGI_APPLICATION = 'biljnevrste.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'iooa_biljnedev9',
+        'USER': 'iooa',
+        'PASSWORD': '11',
+        'HOST': 'ucka.veleri.hr',
+        'PORT': '3306',
     }
 }
 
