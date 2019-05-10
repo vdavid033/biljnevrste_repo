@@ -7,7 +7,6 @@ from django.db import models
 class UporabniDio(models.Model):
     ID_Uporabni_Dio = models.AutoField(primary_key=True)
     naziv = models.CharField(max_length=100)
-    biljna_vrsta = models.ManyToManyField('BiljnaVrsta')
 
     class Meta:
         verbose_name = "Uporabni dio"
@@ -63,6 +62,7 @@ class BiljnaVrsta(models.Model):
     opis_vrste = models.CharField(max_length=255)
     ID_roda = models.ForeignKey(Rod, on_delete=models.CASCADE)
     ID_sistematicara = models.ForeignKey(Sistematicar, on_delete=models.CASCADE)
+    uporabni_dio = models.ManyToManyField('UporabniDio')
 
     class Meta:
         verbose_name = "Biljna vrsta"
