@@ -4,7 +4,7 @@ from django.db import models
 class Rod(models.Model):
     ID_roda = models.AutoField(primary_key=True)
     naziv_roda =  models.CharField(max_length=30)
-	
+
 	class Meta:
 		verbose_name = "Rod"
 		verbose_name_plural = "Rodovi"
