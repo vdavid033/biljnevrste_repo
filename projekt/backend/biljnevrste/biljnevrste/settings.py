@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'biljnevrsteapp'
 ]
 
 MIDDLEWARE = [
@@ -80,12 +82,12 @@ WSGI_APPLICATION = 'biljnevrste.wsgi.application'
 # }
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql.connector.django',
-        'NAME': 'iooa_biljnedev9',
-        'USER': 'iooa',
-        'PASSWORD': '11',
-        'HOST': 'ucka.veleri.hr',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'iooa_biljnedev1',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': 3306
     }
 }
 
