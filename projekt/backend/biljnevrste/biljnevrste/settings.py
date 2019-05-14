@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'k=+@gp)!i3%hjq4#-eimd#=l^7pn!4fd8dkqah74=pg7+qlv95'
+SECRET_KEY = 'cy634b030+@gedxh5^f$^xe5#gn&(ozdz(bep!d&dgp%vo==2m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -72,6 +72,12 @@ WSGI_APPLICATION = 'biljnevrste.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
