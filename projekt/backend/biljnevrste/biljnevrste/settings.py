@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'cy634b030+@gedxh5^f$^xe5#gn&(ozdz(bep!d&dgp%vo==2m'
+SECRET_KEY = 'k=+@gp)!i3%hjq4#-eimd#=l^7pn!4fd8dkqah74=pg7+qlv95'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,8 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'biljnevrsteapp'
 ]
 
 MIDDLEWARE = [
@@ -74,20 +72,14 @@ WSGI_APPLICATION = 'biljnevrste.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'iooa_biljnedev1',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': 3306
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'iooa_biljnedev9',
+        'USER': 'iooa',
+        'PASSWORD': '11',
+        'HOST': 'ucka.veleri.hr',
+        'PORT': '3306',
     }
 }
 
