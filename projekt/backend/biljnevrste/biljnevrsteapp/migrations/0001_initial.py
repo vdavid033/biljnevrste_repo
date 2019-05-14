@@ -1,4 +1,6 @@
-import django.db.models.deletio
+
+import django.db.models.deletion
+
 from django.db import migrations, models
 
 
