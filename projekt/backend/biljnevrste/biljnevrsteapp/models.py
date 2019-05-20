@@ -98,7 +98,6 @@ class Podvrsta(models.Model):
     def __str__(self):
         return self.naziv_podvrste
 
-
 class Varijet(models.Model):
     ID_varijeta = models.AutoField(primary_key=True)
     naziv_varijeta = models.CharField(max_length=100)
