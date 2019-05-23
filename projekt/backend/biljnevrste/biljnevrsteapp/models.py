@@ -18,7 +18,7 @@ class UporabniDio(models.Model):
 
 class Slika(models.Model):
     ID_Slike = models.AutoField(primary_key=True)
-    naziv_slike = models.CharField(max_length=50)
+    naziv_slike = models.ImageField(blank=False, null=False)
     opis_slike = models.CharField(max_length=255)
     ID_uporabni_dio = models.ForeignKey(UporabniDio, on_delete=models.CASCADE)
 
