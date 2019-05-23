@@ -46,27 +46,31 @@
             </div>
             <div class="col">
                 <div class="col">
-                Sistemtičar:
+                Sistemtičari:
                 <div>
                     <q-input outlined v-model="myInput" label="Outlined" />
                 </div>
             </div>
           </div>
           </div>
-        <div class="q-pa-md" style="max-width: 300px">
-          <div class="q-gutter-md">
-            <q-select square filled v-model="model" :options="options" label="Square filled" />
-          </div>
-        </div>
         <div class="row gutter-xs">
             <div class="col">
-                Botanicka porodica:
                 <div>
-                    <q-input outlined v-model="myInput" label="Outlined" />
+                <q-btn-dropdown label="Botanička porodica:">
+                  <!-- dropdown content -->
+                  <q-list link>
+                    <q-item>
+                      <q-item-main>
+                        <q-item-tile label>Item</q-item-tile>
+                      </q-item-main>
+                    </q-item>
+                  </q-list>
+                </q-btn-dropdown>
                 </div>
             </div>
             <div class="col">
                 Dodaj novu lat. kat.:
+                {{post.data.naziv}}
                 <div>
                     <q-input outlined v-model="myInput" label="Outlined" />
                 </div>
@@ -88,9 +92,6 @@
         <div class="row gutter-xs">
           <div class="col">
               Uporabni dio:
-              <div>
-                  <q-select v-model="model" :options="options" label="Standard" />
-              </div>
           </div>
           <div class="col">
               Bioaktivna tvar:
@@ -185,10 +186,6 @@ export default {
     return {
       myInput: '',
       text: '',
-      model: null,
-      options: [
-        'jedan', 'dva', 'tri', 'cetiri', 'pet'
-      ],
       herba: true,
       cvat: true,
       korjen: true,
@@ -201,7 +198,8 @@ export default {
       petiljka: true,
       gomolj: true,
       sjeme: true,
-      zadebljalikorjen: true
+      zadebljalikorjen: true,
+      post: []
 
     }
   },
@@ -209,6 +207,24 @@ export default {
     handleClick () {
       this.myInput = 'clicked'
     }
+  },
+  loadData () {
+    this.$axios.get('http://193.198.97.14:8000/api/uporabnidijelovi/1/?format=json')
+      .then((response) => {
+        this.data = response.data
+      })
+      .catch(() => {
+        this.$q.notify({
+          color: 'negative',
+          position: 'top',
+          message: 'Loading failed',
+          icon: 'report_problem'
+        })
+      })
   }
 }
 </script>
+
+  function newFunction() {
+    return null;
+  }

@@ -17,7 +17,7 @@
         </q-btn>
 
         <q-toolbar-title>
-          Biljne vrste
+          Unos biljnih vrsta
           <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
         </q-toolbar-title>
       </q-toolbar>
