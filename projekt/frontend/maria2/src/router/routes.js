@@ -1,4 +1,3 @@
-
 const routes = [
   {
     path: '/',
@@ -8,28 +7,13 @@ const routes = [
     ]
   },
   {
-    path: '/play',
-    component: () => import('layouts/MyLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/Play.vue') }
-    ]
-  },
-  {
     path: '/unos',
     component: () => import('layouts/MyLayout.vue'),
     children: [
       { path: '', component: () => import('pages/unos.vue') }
     ]
-  },
-  {
-    path: '/test',
-    component: () => import('layouts/MyLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/test.vue') }
-    ]
   }
 ]
-
 // Always leave this as last one
 if (process.env.MODE !== 'ssr') {
   routes.push({

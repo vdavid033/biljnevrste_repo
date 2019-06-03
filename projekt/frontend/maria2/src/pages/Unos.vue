@@ -61,7 +61,7 @@
                   <q-list link>
                     <q-item>
                       <q-item-main>
-                        <q-item-tile label>Item</q-item-tile>
+                        <q-item-tile>Item</q-item-tile>
                       </q-item-main>
                     </q-item>
                   </q-list>
@@ -70,7 +70,6 @@
             </div>
             <div class="col">
                 Dodaj novu lat. kat.:
-                {{post.data.naziv}}
                 <div>
                     <q-input outlined v-model="myInput" label="Outlined" />
                 </div>
@@ -182,6 +181,17 @@
 
 <script>
 export default {
+  loadData () {
+    this.$axios.get('http://193.198.97.14:8000/api/porodice/1/?format=api')
+      .then((response) => {
+        this.data = response.data
+      })
+      .catch(() => {
+        this.$q.notify({
+          message: 'Loading failed'
+        })
+      })
+  },
   data () {
     return {
       myInput: '',
@@ -199,6 +209,7 @@ export default {
       gomolj: true,
       sjeme: true,
       zadebljalikorjen: true,
+      loading: true,
       post: []
 
     }
@@ -207,20 +218,6 @@ export default {
     handleClick () {
       this.myInput = 'clicked'
     }
-  },
-  loadData () {
-    this.$axios.get('http://193.198.97.14:8000/api/uporabnidijelovi/1/?format=json')
-      .then((response) => {
-        this.data = response.data
-      })
-      .catch(() => {
-        this.$q.notify({
-          color: 'negative',
-          position: 'top',
-          message: 'Loading failed',
-          icon: 'report_problem'
-        })
-      })
   }
 }
 </script>
