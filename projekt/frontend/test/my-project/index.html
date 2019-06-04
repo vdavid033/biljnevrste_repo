@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link rel="stylesheet" type="text/css" href="/static/css/mojcss.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>my-project</title>
+	
+	<div id="main">
+	  <nav v-bind:class="active" v-on:click.prevent>
+		<a href="#" class="pocetna" v-on:click="makeActive('pocetna')">Početna</a>
+		<a href="#" class="unos_biljaka" v-on:click="makeActive('unos_biljaka')">Unos biljaka</a>
+		<a href="#" class="pregled_biljaka" v-on:click="makeActive('pregled_biljaka')">Pregled biljaka</a>
+		<a href="#" class="pregled_rezultata_kviza" v-on:click="makeActive('pregled_rezultata_kviza')">Pregled rezultata kviza</a>
+	  </nav>
+	  
+	  <p>You chose <b>{{ active }}</b></p>
+	</div>
+	
+  </head>
+  
+  <body>
+    <!-- built files will be auto injected -->
+	<div id="main"></div>
+	
+  </body>
+  
+</html>
+
+
