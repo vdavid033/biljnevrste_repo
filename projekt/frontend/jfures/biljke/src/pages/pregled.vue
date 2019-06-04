@@ -1,8 +1,8 @@
 <template>
     <q-page padding="">
         <div class="absolute" style="top: 0; right: 20px; transform: translateY(50%);">
-        <label>Bioaktivna tvar: </label>
-        <input type="text" v-model="search" placeholder="search" />
+          <label>Bioaktivna tvar: </label>
+          <input type="text" v-model="search" placeholder="search" />
         </div>
           <div class="q-pa-md">
               <q-label>Uporabni dio</q-label>
@@ -96,6 +96,17 @@
 
 <script>
 export default {
+  loadData () {
+    this.$axios.get('http://193.198.97.14:8000/api/porodice/1/?format=api')
+      .then((response) => {
+        this.data = response.data
+      })
+      .catch(() => {
+        this.$q.notify({
+          message: 'Loading failed'
+        })
+      })
+  },
   data () {
     return {
       myInput: '',
