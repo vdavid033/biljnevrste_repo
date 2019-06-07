@@ -15,6 +15,13 @@ const routes = [
     ]
   },
   {
+    path: '/unosmaria',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Unos-Maria.vue') }
+    ]
+  },
+  {
     path: '/kviz',
     component: () => import('layouts/MyLayout.vue'),
     children: [
