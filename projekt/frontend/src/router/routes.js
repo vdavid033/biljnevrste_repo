@@ -29,6 +29,34 @@ const routes = [
     ]
   },
   {
+    path: '/kviz1',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Kviz-Maracic1.vue') }
+    ]
+  },
+  {
+    path: '/kviz2',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Kviz-Maracic2.vue') }
+    ]
+  },
+  {
+    path: '/test',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Test-Maracic.vue') }
+    ]
+  },
+  {
+    path: '/test-radio',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Test-radio-Maracic.vue') }
+    ]
+  },
+  {
     path: '/pregled',
     component: () => import('layouts/MyLayout.vue'),
     children: [
