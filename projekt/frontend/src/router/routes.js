@@ -57,10 +57,10 @@ const routes = [
     ]
   },
   {
-    path: '/pregled',
+    path: '/pregledfures',
     component: () => import('layouts/MyLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/pregled.vue') }
+      { path: '', component: () => import('pages/Pregled-Fures.vue') }
     ]
   }
 ]

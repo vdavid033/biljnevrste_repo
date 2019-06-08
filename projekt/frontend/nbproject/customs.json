@@ -1,0 +1,12 @@
+{
+    "elements": {
+        "q-label": {},
+        "q-page": {},
+        "q-btn": {}
+    },
+    "attributes": {
+        "v-model": {
+            "context": "input"
+        }
+    }
+}
