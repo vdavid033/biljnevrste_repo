@@ -52,7 +52,10 @@ module.exports = function (ctx) {
         'QRouteTab',
         'QInput',
         'QCheckbox',
-        'QBtnDropdown'
+        'QBtnDropdown',
+        'QRadio',
+        'QAvatar',
+        'QBadge'
       ],
 
       directives: [

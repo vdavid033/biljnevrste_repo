@@ -17,7 +17,9 @@
         <q-tab name="pregled" @click="idinaPregled" label="Pregled Biljaka">
           <q-badge color="red" floating></q-badge>
         </q-tab>
-        <q-tab name="kviz" @click="idinaKviz" label="Pregled rezultata kviza" />
+        <q-tab name="kviz" @click="idinaKviz" label="Pregled rezultata kviza">
+          <q-badge color="red" floating></q-badge>
+        </q-tab>
       </q-tabs>
     </div>
     </div>
@@ -28,7 +30,6 @@
     </q-page-container>
   </q-layout>
 </template>
-
 <script>
 export default {
   methods: {
@@ -40,6 +41,11 @@ export default {
     },
     idinaKviz () {
       this.$router.push({ path: '/kviz' })
+    }
+  },
+  data () {
+    return {
+      tab: ''
     }
   }
 }
