@@ -8,14 +8,14 @@ const routes = [
     ]
   },
   {
-    path: '/unos',
+    path: '/unostest',
     component: () => import('layouts/MyLayout.vue'),
     children: [
       { path: '', component: () => import('pages/unos.vue') }
     ]
   },
   {
-    path: '/unosmaria',
+    path: '/unos',
     component: () => import('layouts/MyLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Unos-Maria.vue') }
