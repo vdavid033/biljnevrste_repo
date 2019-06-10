@@ -69,6 +69,13 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/BiljneVrsteRod.vue') }
     ]
+  },
+ {
+    path: '/prikaz',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/prikaz.vue') }
+    ]
   }
 ]
 // Always leave this as last one
