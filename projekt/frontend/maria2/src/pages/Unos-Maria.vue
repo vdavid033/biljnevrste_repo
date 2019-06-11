@@ -56,27 +56,6 @@
             </div>
           </div>
           </div>
-    <div class="q-pa-lg row">
-      <!--vd -->
-      <div class="col">
-        <q-list bordered padding class="rounded-borders" style="max-width: 300px">
-        <q-item-label header>Izaberi botaničku porodicu</q-item-label>
-        <q-item v-for="porodica in porodice" :key="porodica.id" class="q-my-sm" clickable v-ripple>
-          <q-item-section>
-            <q-radio v-model="radioR" :val=porodica.naziv_roda />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              <a :href=porodica.url>
-              {{ porodica.hrvatski_naziv_porodice }}
-              </a>
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-        </q-list>
-      </div>
-      <!-- end vd -->
-    </div>
             <div class="col">
                 Dodaj novu lat. kat.:
                 <div>
@@ -96,10 +75,32 @@
                   <q-btn round color="primary" label="+" text-color="black" @click="handleClick" />
               </div>
           </div>
+    <div class="q-pa-lg row">
+        <div class="col">
+        <q-list bordered padding class="rounded-borders">
+        <q-item-label header>Izaberi botaničku porodicu</q-item-label>
+        <q-item v-for="porodica in porodice" :key="porodica.id" class="q-my-sm" clickable v-ripple>
+          <q-item-section>
+            <q-radio v-model="radioV" :val=porodica.hrvatski_naziv_porodice />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>
+              <a :href=porodica.url>
+              {{ porodica.hrvatski_naziv_porodice }}
+              </a>
+            </q-item-label>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>
+              (lat. {{ porodica.latisnki_naziv_porodice }})
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+        </q-list>
+      </div>
+      <!-- end vd -->
+    </div>
         <div class="row gutter-xs">
-          <div class="col">
-              Uporabni dio:
-          </div>
           <div class="col">
               Bioaktivna tvar:
               <div>
@@ -110,53 +111,23 @@
               <div class="col">
               Opis biljke:
               <div>
-                  <q-input outlined v-model="opis" label="Oopis" />
+                  <q-input outlined v-model="opis" label="Opis" />
               </div>
           </div>
           </div>
         </div>
-          <div class="q-pa-md">
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="herba" label="herba" />
-            </div>
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="cvat" label="cvat" />
-            </div>
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="korjen" label="korjen" />
-            </div>
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="pupoljak" label="gigantski terminalni pupoljak" />
-            </div>
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="stabljika" label="stabljika" />
-            </div>
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="hipokotil" label="zadebljali hipokotil" />
-            </div>
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="cvijet" label="cvijet" />
-            </div>
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="plod" label="plod" />
-            </div>
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="list" label="list" />
-            </div>
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="petiljka" label="petiljka" />
-            </div>
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="gomolj" label="gomolj" />
-            </div>
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="sjeme" label="sjeme" />
-            </div>
-            <div class="q-gutter-sm">
-              <q-checkbox v-model="zadebljalikorjen" label="zadebljali korjen" />
-            </div>
-            <div class="q-px-sm">
-            </div>
+          <div class="col">
+            <q-list bordered padding class="rounded-borders" style="max-width: 300px">
+            <q-item-label header>Uporabni dio</q-item-label>
+            <q-item  v-for="dio in uporabnidijelovi" :key="dio.id" class="q-my-sm" clickable v-ripple>
+              <q-item-section>
+                <q-radio v-model='radioU' :val=dio.naziv />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label title>{{ dio.naziv }}</q-item-label>
+              </q-item-section>
+            </q-item>
+            </q-list>
           </div>
           <div class="col">
               Dodaj novi uporabni dio:
@@ -185,9 +156,6 @@
           </div>
         <div class="row gutter-xs">
           <div class="col">
-          <div class="q-pa-lg text-weight-bold q-display-2">
-            {{this.rod.naziv_roda}}
-          </div>
               <div>
                   <q-btn color="white" text-color="black" label="SPREMI" />
               </div>
@@ -218,30 +186,23 @@ export default {
       uporab: '',
       opis: '',
       text: '',
-      herba: true,
-      cvat: true,
-      korjen: true,
-      pupoljak: true,
-      stabljika: true,
-      hipokotil: true,
-      cvijet: true,
-      plod: true,
-      list: true,
-      petiljka: true,
-      gomolj: true,
-      sjeme: true,
-      zadebljalikorjen: true,
-      loading: true,
       sistem: '',
+      hrvatskiNaziv: '',
+      radioS: '',
       radioR: '',
-      porodice: []
+      radioV: '',
+      radioU: '',
+      radioB: '',
+      textLN: '',
+      porodice: [],
+      uporabnidijelovi: []
     }
   },
   methods: {
     onItemClick () {
       console.log('Clicked on an Item')
     },
-    fetchBiljneVrste () {
+    fetchPorodice () {
       this.$axios.get('http://193.198.97.14:8000/api/porodice/?format=json')
         .then((response) => {
           this.porodice = response.data
@@ -249,10 +210,20 @@ export default {
         .catch(error => {
           console.log(error)
         })
+    },
+    fetchUporabniDijelovi () {
+      this.$axios.get('http://193.198.97.14:8000/api/uporabnidijelovi/?format=json')
+        .then((response) => {
+          this.uporabnidijelovi = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   },
   created () {
-    this.loadData()
+    this.fetchPorodice()
+    this.fetchUporabniDijelovi()
   }
 }
 </script>
