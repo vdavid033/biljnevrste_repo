@@ -29,10 +29,23 @@ class Slika(models.Model):
     def __str__(self):
         return self.naziv_slike
 
+class Porodica(models.Model):
+    ID_porodice = models.AutoField(primary_key=True)
+    hrvatski_naziv_porodice = models.CharField(max_length=100)
+    latisnki_naziv_porodice = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name = "Porodica"
+        verbose_name_plural = "Porodice"
+
+    def __str__(self):
+        return self.hrvatski_naziv_porodice
+
 
 class Rod(models.Model):
     ID_roda = models.AutoField(primary_key=True)
     naziv_roda = models.CharField(max_length=30)
+    ID_porodice = models.ForeignKey(Porodica, on_delete=models.CASCADE, null= True)
 
     class Meta:
         verbose_name = "Rod"
@@ -59,7 +72,7 @@ class BiljnaVrsta(models.Model):
     hrvatski_naziv_vrste = models.CharField(max_length=100)
     latinski_naziv = models.CharField(max_length=100)
     sinonim_vrste = models.CharField(max_length=100)
-    opis_vrste = models.CharField(max_length=255)
+    opis_vrste = models.TextField()
     ID_roda = models.ForeignKey(Rod, on_delete=models.CASCADE)
     ID_sistematicara = models.ForeignKey(Sistematicar, on_delete=models.CASCADE)
     uporabni_dio = models.ManyToManyField('UporabniDio')
@@ -72,18 +85,6 @@ class BiljnaVrsta(models.Model):
         return self.hrvatski_naziv_vrste
 
 
-class Porodica(models.Model):
-    ID_porodice = models.AutoField(primary_key=True)
-    hrvatski_naziv_porodice = models.CharField(max_length=100)
-    latisnki_naziv_porodice = models.CharField(max_length=100)
-    ID_roda = models.ForeignKey(Rod, on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = "Porodica"
-        verbose_name_plural = "Porodice"
-
-    def __str__(self):
-        return self.hrvatski_naziv_porodice
 
 
 class Podvrsta(models.Model):

@@ -80,6 +80,9 @@ DATABASES = {
         'PASSWORD': '11',
         'HOST': 'ucka.veleri.hr',
         'PORT': '3306',
+        'OPTIONS': {
+            'SET storage_engine=INNODB,character_set_connection=utf8,collation_connection=utf8_unicode_ci'
+        },
     }
 }
 
@@ -117,7 +120,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-MEDIA_URL =  '/media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 STATIC_URL = '/static/'
