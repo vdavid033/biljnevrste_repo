@@ -84,12 +84,6 @@
     </div>
   </q-page>
 </template>
-
-<q-toolbar-title>
-  Layout Header
-  <span slot="subtitle">Optional subtitle</span>
-</q-toolbar-title>
-
 <style>
 </style>
 
