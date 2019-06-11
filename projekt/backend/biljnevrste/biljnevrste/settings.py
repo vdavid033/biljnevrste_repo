@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'biljnevrste.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'iooa_biljnedev7',
+        'NAME': 'iooa_biljnedev6',
         'USER': 'iooa',
         'PASSWORD': '11',
         'HOST': 'ucka.veleri.hr',
@@ -117,7 +117,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-MEDIA_URL =  '/media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 STATIC_URL = '/static/'
