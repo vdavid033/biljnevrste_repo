@@ -75,11 +75,14 @@ WSGI_APPLICATION = 'biljnevrste.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'iooa_biljnedev6',
+        'NAME': 'iooa_biljnedev4',
         'USER': 'iooa',
         'PASSWORD': '11',
         'HOST': 'ucka.veleri.hr',
         'PORT': '3306',
+        'OPTIONS': {
+            'SET storage_engine=INNODB,character_set_connection=utf8,collation_connection=utf8_unicode_ci'
+        },
     }
 }
 

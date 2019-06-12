@@ -21,13 +21,14 @@ class Slika(models.Model):
     naziv_slike = models.ImageField(blank=False, null=False)
     opis_slike = models.CharField(max_length=1000)
     ID_uporabni_dio = models.ForeignKey(UporabniDio, on_delete=models.CASCADE)
-
+    
     class Meta:
         verbose_name = "Slika"
         verbose_name_plural = "Slike"
 
     def __str__(self):
-        return self.naziv_slike
+        return self.opis_slike
+
 
 class Porodica(models.Model):
     ID_porodice = models.AutoField(primary_key=True)
@@ -76,6 +77,7 @@ class BiljnaVrsta(models.Model):
     ID_roda = models.ForeignKey(Rod, on_delete=models.CASCADE)
     ID_sistematicara = models.ForeignKey(Sistematicar, on_delete=models.CASCADE)
     uporabni_dio = models.ManyToManyField('UporabniDio')
+    slika = models.ManyToManyField('Slika')
 
     class Meta:
         verbose_name = "Biljna vrsta"
@@ -83,7 +85,6 @@ class BiljnaVrsta(models.Model):
 
     def __str__(self):
         return self.hrvatski_naziv_vrste
-
 
 
 
