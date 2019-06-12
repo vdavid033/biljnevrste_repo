@@ -24,7 +24,7 @@ SECRET_KEY = 'k=+@gp)!i3%hjq4#-eimd#=l^7pn!4fd8dkqah74=pg7+qlv95'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['193.198.97.14']
 
 # Application definition
 
@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'biljnevrste.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'iooa_biljnedev6',
+        'NAME': 'iooa_biljnedev4',
         'USER': 'iooa',
         'PASSWORD': '11',
         'HOST': 'ucka.veleri.hr',
@@ -121,3 +121,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 STATIC_URL = '/static/'
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = (
+    'http://198.193.97.14:8000',
+)
