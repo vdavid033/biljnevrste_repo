@@ -10,7 +10,7 @@
             alt="slikaBiljke"
             :src="slikeIzbor[0]"
             spinner-color="white"
-            style="height: 400px; width: 400px; border-radius: 50%"
+            style="height: 250px; width: 250px; border-radius: 50%"
           />
         </div>
         <div>
@@ -23,7 +23,7 @@
             alt="slikaBiljke"
             :src="slikeIzbor[1]"
             spinner-color="white"
-            style="height: 400px; width: 400px; border-radius: 50%"
+            style="height: 250px; width: 250px; border-radius: 50%"
           />
         </div>
         <div>
@@ -36,7 +36,7 @@
             alt="slikaBiljke"
             :src="slikeIzbor[2]"
             spinner-color="white"
-            style="height: 400px; width: 400px; border-radius: 50%"
+            style="height: 250px; width: 250px; border-radius: 50%"
           />
         </div>
         <div>
@@ -49,7 +49,7 @@
             alt="slikaBiljke"
             :src="slikeIzbor[3]"
             spinner-color="white"
-            style="height: 400px; width: 400px; border-radius: 50%"
+            style="height: 250px; width: 250px; border-radius: 50%"
           />
         </div>
         <div>
@@ -62,7 +62,7 @@
             alt="slikaBiljke"
             :src="slikeIzbor[4]"
             spinner-color="white"
-            style="height: 400px; width: 400px; border-radius: 50%"
+            style="height: 250px; width: 250px; border-radius: 50%"
           />
         </div>
         <div>
@@ -134,13 +134,15 @@ export default {
       biljnevrste: [],
       uporabnidijelovi: [],
       biljka: {},
-      slikeIzbor: []
+      slikeIzbor: [],
+      sveSlike: []
     }
   },
   created () {
     this.fetchRodovi()
     this.fetchBiljneVrste()
     this.fetchUporabniDijelovi()
+    this.fetchRandomSlike()
   },
   methods: {
     provjeri () {
@@ -167,20 +169,18 @@ export default {
             .catch(error => {
               console.log(error)
             })
-          for (let i = 0; i < 4;) {
-            let randomBiljnaVrsta = Math.floor(Math.random() * this.biljnevrste.length)
-            this.$axios.get(this.biljnevrste[randomBiljnaVrsta].slika[Math.floor(Math.random() * this.biljnevrste[randomBiljnaVrsta].slika.length)])
-              .then((response) => {
-                if (!this.slikeIzbor.includes(response.data.naziv_slike)) {
-                  console.log(i)
-                  this.slikeIzbor.push(response.data.naziv_slike)
-                  i++
-                }
-                console.log(response)
-              })
-              .catch(error => {
-                console.log(error)
-              })
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    fetchRandomSlike () {
+      this.$axios.get('http://193.198.97.14:8000/api/slike/?format=json')
+        .then((response) => {
+          this.sveSlike = response.data
+          for (let i = 0; i < 4; i++) {
+            var randomSlika = Math.floor(Math.random() * this.sveSlike.length)
+            this.slikeIzbor.push(this.sveSlike[randomSlika].naziv_slike)
           }
         })
         .catch(error => {
