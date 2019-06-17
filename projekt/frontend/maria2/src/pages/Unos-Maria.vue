@@ -102,12 +102,6 @@
     </div>
         <div class="row gutter-xs">
           <div class="col">
-              Bioaktivna tvar:
-              <div>
-                  <q-input outlined v-model="bioakt" label="Bioaktivna tvar" />
-              </div>
-          </div>
-          <div class="col">
               <div class="col">
               Opis biljke:
               <div>
