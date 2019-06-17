@@ -68,47 +68,29 @@
           <th class="text-left">Porodica (hrv.)</th>
           <th class="text-left">Botanička porodica (lat.)</th>
         </tr>
-        <tr>
+        </thead>
+        <tbody>
+        <tr v-for="vrsta in biljnevrste" :key="vrsta.id" class="q-my-sm" clickable v-ripple>
           <td class="text-left">
-            <q-item v-for="vrsta in biljnevrste" :key="vrsta.id" class="q-my-sm" clickable v-ripple>
-              <q-item-section><q-radio v-model="radioV" :val=vrsta.hrvatski_naziv_vrste /></q-item-section>
-              <q-item-section><q-item-label><a :href=vrsta.url>{{ vrsta.hrvatski_naziv_vrste }}</a></q-item-label></q-item-section>
-              <q-item-section><q-item-label>(lat. {{ vrsta.latinski_naziv }})</q-item-label></q-item-section>
-            </q-item>
+            <q-item-section><q-radio v-model="radioV" :val=vrsta.hrvatski_naziv_vrste /></q-item-section>
+            <q-item-section><q-item-label><a :href=vrsta.url>{{ vrsta.hrvatski_naziv_vrste }}</a></q-item-label></q-item-section>
           </td>
-
           <td class="text-left">
-            <q-item v-for="porodica in porodice" :key="porodica.ID_roda" class="q-my-sm" clickable v-ripple>
-              <q-item-section>
-                <q-radio v-model="radioR" :val=porodica.latisnki_naziv_porodice />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label>
-                  <a :href=porodica.url>
-                  {{ porodica.latisnki_naziv_porodice }}
-                  </a>
-                </q-item-label>
-              </q-item-section>
-            </q-item>
-          </td>
-
-          <td class="text-left">
-            <q-item v-for="rod in rodovi" :key="rod.id" class="q-my-sm" clickable v-ripple>
-              <q-item-section>
-                <q-radio v-model="radioR" :val=rod.naziv_roda />
-              </q-item-section>
-              <q-item-section>
+            <span v-for="rod in rodovi" :key="rod.id" class="q-my-sm" clickable v-ripple>
+              <span v-if="rod.url === vrsta.ID_roda">
                 <q-item-label>
                   <a :href=rod.url>
                   {{ rod.naziv_roda }}
                   </a>
                 </q-item-label>
-              </q-item-section>
-            </q-item>
+              </span>
+            </span>
           </td>
-
           <td class="text-left">
-            <q-item v-for="porodica in porodice" :key="porodica.ID_roda" class="q-my-sm" clickable v-ripple>
+            <span v-for="rod in rodovi" :key="rod.id" class="q-my-sm" clickable v-ripple>
+              <span v-if="rod.url === vrsta.ID_roda">
+                <span v-for="porodica in porodice" :key="porodica.ID_roda" class="q-my-sm" clickable v-ripple>
+                  <span v-if="rod.ID_porodice === porodica.url">
               <q-item-section>
                 <q-radio v-model="radioR" :val=porodica.hrvatski_naziv_porodice />
               </q-item-section>
@@ -119,10 +101,33 @@
                   </a>
                 </q-item-label>
               </q-item-section>
-            </q-item>
+              </span>
+              </span>
+              </span>
+            </span>
+          </td>
+          <td class="text-left">
+            <span v-for="rod in rodovi" :key="rod.id" class="q-my-sm" clickable v-ripple>
+              <span v-if="rod.url === vrsta.ID_roda">
+                <span v-for="porodica in porodice" :key="porodica.ID_roda" class="q-my-sm" clickable v-ripple>
+                  <span v-if="rod.ID_porodice === porodica.url">
+              <q-item-section>
+                <q-radio v-model="radioR" :val=porodica.latisnki_naziv_porodice />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>
+                  <a :href=porodica.url>
+                  {{ porodica.latisnki_naziv_porodice }}
+                  </a>
+                </q-item-label>
+              </q-item-section>
+              </span>
+              </span>
+              </span>
+            </span>
           </td>
         </tr>
-      </thead>
+      </tbody>
     </table>
 <div class="row gutter-xs">
           <div class="col">
