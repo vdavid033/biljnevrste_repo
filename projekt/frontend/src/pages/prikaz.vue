@@ -14,9 +14,13 @@ Varijet: {{ varijet.naziv_varijeta }}
   </div>
    <div>&nbsp;</div>
     <div>
-Uporabni dio: {{ vrsta.uporabni_dio }}
+Uporabni dio:
 <div v-for="dio in vrsta.uporabni_dio" :key="dio.id" class="q-my-sm" clickable v-ripple>
-  {{ dio.naziv }}
+  <div v-for="udio in uporabni_dio" :key="udio.id">
+    <span v-if="dio === udio.url" >
+        {{ udio.naziv }}
+    </span>
+  </div>
   </div>
   </div>
    <div>&nbsp;</div>
@@ -28,20 +32,16 @@ OPIS BILJKE:
       {{ vrsta.opis_vrste }}
     </div>
   </div>
-  <div class="q-pa-md">
-    <q-carousel
-      animated
-      v-model="slide"
-      arrows
-      navigation
-      infinite
-    >
-      <q-carousel-slide :name="1" img-src="https://www.veleri.hr/studisweb/images/veleri_back.png" />
-      <q-carousel-slide :name="2" img-src="https://www.veleri.hr/studisweb/images/veleri_back.png" />
-      <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-      <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
-    </q-carousel>
+
+  <div v-for="slika1 in vrsta.slika" :key="slika1.id" class="q-my-sm" clickable v-ripple>
+    <div v-for="uslika in slika" :key="uslika.id">
+      <div v-if="slika1 === uslika.url" >
+      <img :src=uslika.naziv_slike  />
+                {{ uslika.opis_slike }}
+      </div>
+    </div>
   </div>
+
   <div>
      <q-btn color="blue" text-color="black" class="absolute" style="right: 0; right: 200px; transform: translateY(50%);" label="Izbriši" />
       <q-btn color="blue" text-color="black" class="absolute" style="right: 0; right: 100px; transform: translateY(50%);" label="Uredi" />
@@ -59,16 +59,19 @@ export default {
     return {
       posts: [],
       current: 3,
-      slide: 1,
+      slide: '1',
       vrsta: '',
       varijet: '',
-      uporabni_dio: []
+      uporabni_dio: [],
+      slika: []
+
     }
   },
   created () {
     this.fetchBiljneVrste()
     this.fetchVarijet()
     this.fetchUporabniDio()
+    this.fetchSlike()
   },
   methods: {
     fetchVarijet () {
@@ -92,10 +95,21 @@ export default {
           })
         })
     },
-    fetchUporabniDio (dio) {
-      this.$axios.get(dio)
+    fetchUporabniDio () {
+      this.$axios.get('http://193.198.97.14:8000/api/uporabnidijelovi/?format=json')
         .then((response) => {
           this.uporabni_dio = response.data
+        })
+        .catch(() => {
+          this.$q.notify({
+            message: 'Loading failed'
+          })
+        })
+    },
+    fetchSlike () {
+      this.$axios.get('http://193.198.97.14:8000/api/slike/?format=json')
+        .then((response) => {
+          this.slika = response.data
         })
         .catch(() => {
           this.$q.notify({
