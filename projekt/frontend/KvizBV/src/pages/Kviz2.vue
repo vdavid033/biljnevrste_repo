@@ -178,9 +178,13 @@ export default {
       this.$axios.get('http://193.198.97.14:8000/api/slike/?format=json')
         .then((response) => {
           this.sveSlike = response.data
-          for (let i = 0; i < 4; i++) {
+          for (let i = 0; i < 4;) {
             var randomSlika = Math.floor(Math.random() * this.sveSlike.length)
-            this.slikeIzbor.push(this.sveSlike[randomSlika].naziv_slike)
+            if (this.slikeIzbor.includes(this.sveSlike[randomSlika].naziv_slike) === false) {
+              this.slikeIzbor.push(this.sveSlike[randomSlika].naziv_slike)
+              console.log(this.slikeIzbor)
+              i++
+            }
           }
         })
         .catch(error => {
