@@ -4,11 +4,52 @@
           <label>Bioaktivna tvar: </label>
           <input class="form-control" type="text" v-model="search" placeholder="Search" />
         </div>
-          <div class="q-pa-md">
-              <label>Uporabni dio</label>
             <div class="col">
         <q-list bordered padding class="rounded-borders" style="max-width: 300px">
         <q-item-label header>Uporabni dio</q-item-label>
+        <div class="q-pa-md">
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="herba" label="herba" />
+            </div>
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="cvat" label="cvat" />
+            </div>
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="korjen" label="korjen" />
+            </div>
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="pupoljak" label="gigantski terminalni pupoljak" />
+            </div>
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="stabljika" label="stabljika" />
+            </div>
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="hipokotil" label="zadebljali hipokotil" />
+            </div>
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="cvijet" label="cvijet" />
+            </div>
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="plod" label="plod" />
+            </div>
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="list" label="list" />
+            </div>
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="petiljka" label="petiljka" />
+            </div>
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="gomolj" label="gomolj" />
+            </div>
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="sjeme" label="sjeme" />
+            </div>
+            <div class="q-gutter-sm">
+              <q-checkbox v-model="zadebljalikorjen" label="zadebljali korjen" />
+            </div>
+            <div class="q-px-sm">
+            </div>
+          </div>
         <q-item  v-for="dio in uporabnidijelovi" :key="dio.id" class="q-my-sm" clickable v-ripple>
           <q-item-section>
             <q-radio v-model='radioU' :val=dio.naziv />
@@ -19,74 +60,70 @@
         </q-item>
         </q-list>
       </div>
-          </div>
-        <table class="q-table responsive">
-  <thead>
-    <tr>
-      <th>Botanička porodica (lat.)
-        <q-item v-for="porodica in porodice" :key="porodica.ID_roda" class="q-my-sm" clickable v-ripple>
-          <q-item-section>
-            <q-radio v-model="radioR" :val=porodica.latisnki_naziv_porodice />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              <a :href=porodica.url>
-              {{ porodica.latisnki_naziv_porodice }}
-              </a>
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-        </th>
-      <th>Rod (lat.)
-      <q-item v-for="rod in rodovi" :key="rod.id" class="q-my-sm" clickable v-ripple>
-          <q-item-section>
-            <q-radio v-model="radioR" :val=rod.naziv_roda />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              <a :href=rod.url>
-              {{ rod.naziv_roda }}
-              </a>
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-        </th>
-      <th>Porodica (hrv.)
-        <q-item v-for="porodica in porodice" :key="porodica.ID_roda" class="q-my-sm" clickable v-ripple>
-          <q-item-section>
-            <q-radio v-model="radioR" :val=porodica.hrvatski_naziv_porodice />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              <a :href=porodica.url>
-              {{ porodica.hrvatski_naziv_porodice }}
-              </a>
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-        </th>
-        <th>Vrsta
-          <q-item v-for="vrsta in biljnevrste" :key="vrsta.id" class="q-my-sm" clickable v-ripple>
-          <q-item-section>
-            <q-radio v-model="radioV" :val=vrsta.hrvatski_naziv_vrste />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              <a :href=vrsta.url>
-              {{ vrsta.hrvatski_naziv_vrste }}
-              </a>
-            </q-item-label>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              (lat. {{ vrsta.latinski_naziv }})
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-        </th>
-    </tr>
-  </thead>
-</table>
+    <table class="q-table responsive">
+      <thead>
+        <tr>
+          <th class="text-left">Vrsta</th>
+          <th class="text-left">Rod (lat.)</th>
+          <th class="text-left">Porodica (hrv.)</th>
+          <th class="text-left">Botanička porodica (lat.)</th>
+        </tr>
+        <tr>
+          <td class="text-left">
+            <q-item v-for="vrsta in biljnevrste" :key="vrsta.id" class="q-my-sm" clickable v-ripple>
+              <q-item-section><q-radio v-model="radioV" :val=vrsta.hrvatski_naziv_vrste /></q-item-section>
+              <q-item-section><q-item-label><a :href=vrsta.url>{{ vrsta.hrvatski_naziv_vrste }}</a></q-item-label></q-item-section>
+              <q-item-section><q-item-label>(lat. {{ vrsta.latinski_naziv }})</q-item-label></q-item-section>
+            </q-item>
+          </td>
+
+          <td class="text-left">
+            <q-item v-for="porodica in porodice" :key="porodica.ID_roda" class="q-my-sm" clickable v-ripple>
+              <q-item-section>
+                <q-radio v-model="radioR" :val=porodica.latisnki_naziv_porodice />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>
+                  <a :href=porodica.url>
+                  {{ porodica.latisnki_naziv_porodice }}
+                  </a>
+                </q-item-label>
+              </q-item-section>
+            </q-item>
+          </td>
+
+          <td class="text-left">
+            <q-item v-for="rod in rodovi" :key="rod.id" class="q-my-sm" clickable v-ripple>
+              <q-item-section>
+                <q-radio v-model="radioR" :val=rod.naziv_roda />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>
+                  <a :href=rod.url>
+                  {{ rod.naziv_roda }}
+                  </a>
+                </q-item-label>
+              </q-item-section>
+            </q-item>
+          </td>
+
+          <td class="text-left">
+            <q-item v-for="porodica in porodice" :key="porodica.ID_roda" class="q-my-sm" clickable v-ripple>
+              <q-item-section>
+                <q-radio v-model="radioR" :val=porodica.hrvatski_naziv_porodice />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>
+                  <a :href=porodica.url>
+                  {{ porodica.hrvatski_naziv_porodice }}
+                  </a>
+                </q-item-label>
+              </q-item-section>
+            </q-item>
+          </td>
+        </tr>
+      </thead>
+    </table>
 <div class="row gutter-xs">
           <div class="col">
               <div>
@@ -133,12 +170,7 @@ export default {
       rodovi: [],
       biljnevrste: [],
       porodice: [],
-      uporabnidijelovi: [],
-      radioS: '',
-      radioR: '',
-      radioV: '',
-      radioB: '',
-      textLN: ''
+      uporabnidijelovi: []
     }
   },
   created () {
