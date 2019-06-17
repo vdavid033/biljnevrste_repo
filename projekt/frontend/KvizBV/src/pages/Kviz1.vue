@@ -1,10 +1,15 @@
 <template>
   <q-page padding>
     <div>
-      {{ this.biljka.hrvatski_naziv_vrste }}
+      naziv: {{ this.biljka.hrvatski_naziv_vrste }}
     </div>
     <div>
-          <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
+          <q-img
+            alt="slikaBiljke"
+            :src="slika1url"
+            spinner-color="white"
+            style="height: 400px; width: 400px; border-radius: 50%"
+          />
     </div>
     <div class="q-pa-lg">
       <q-expansion-item
@@ -16,7 +21,7 @@
         <q-item-label header>Izaberi naziv</q-item-label>
         <q-item @click="promjeniNaslovHrvatskiNaziv(val)" v-for="vrsta in biljnevrste" :key="vrsta.id" class="q-my-sm" clickable v-ripple>
           <q-item-section>
-            <q-radio v-model="radioV" :val=vrsta.hrvatski_naziv_vrste />
+            <q-radio v-model="radioHrvatskiNaziv" :val=vrsta.hrvatski_naziv_vrste />
           </q-item-section>
           <q-item-section>
             <q-item-label>
@@ -39,7 +44,7 @@
         <q-item-label header>Izaberi naziv</q-item-label>
         <q-item v-for="vrsta in biljnevrste" :key="vrsta.id" class="q-my-sm" clickable v-ripple>
           <q-item-section>
-            <q-radio v-model="radioV" :val=vrsta.latinski_naziv />
+            <q-radio v-model="radioLatinskiNaziv" :val=vrsta.latinski_naziv />
           </q-item-section>
           <q-item-section>
             <q-item-label>
@@ -84,17 +89,16 @@ export default {
       links: ['kviz1', 'kviz2'],
       kvizLink: 'kviz2',
       hrvatskiNaziv: '',
-      radioS: '',
-      radioR: '',
-      radioV: '',
-      radioB: '',
+      radioHrvatskiNaziv: '',
+      radioLatinskiNaziv: '',
       checkUD: [],
       textLN: '',
       textHN: '',
       rodovi: [],
       biljnevrste: [],
       uporabnidijelovi: [],
-      biljka: []
+      biljka: {},
+      slika1url: ''
     }
   },
   created () {
@@ -118,13 +122,19 @@ export default {
       this.$axios.get('http://193.198.97.14:8000/api/biljnevrste/?format=json')
         .then((response) => {
           this.biljnevrste = response.data
+          this.biljka = this.biljnevrste[Math.floor(Math.random() * this.biljnevrste.length)]
+          // console.log(this.biljka)
+          this.$axios.get(this.biljka.slika[Math.floor(Math.random() * this.biljka.slika.length)])
+            .then((response) => {
+              this.slika1url = response.data.naziv_slike
+            })
+            .catch(error => {
+              console.log(error)
+            })
         })
         .catch(error => {
           console.log(error)
         })
-    },
-    randomBiljka () {
-      this.biljka = this.biljnevrste[Math.floor(Math.random() * this.biljnevrste.length)]
     },
     fetchUporabniDijelovi () {
       this.$axios.get('http://193.198.97.14:8000/api/uporabnidijelovi/?format=json')
@@ -134,14 +144,18 @@ export default {
         .catch(error => {
           console.log(error)
         })
+    },
+    randomLink (e, go) {
+      e.navigate = false
+      this.kvizLink = this.links[Math.floor(Math.random() * 2)]
+      setTimeout(() => {
+        if (this.kvizLink === 'kviz1') {
+          window.location.reload()
+        } else {
+          go()
+        }
+      }, 1)
     }
-  },
-  randomLink (e, go) {
-    e.navigate = false
-    // this.kvizLink = this.links[Math.floor(Math.random() * 2)]
-    setTimeout(() => {
-      go()
-    }, 1)
   }
 }
 </script>

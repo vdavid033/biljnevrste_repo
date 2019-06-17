@@ -43,7 +43,8 @@ module.exports = function (ctx) {
         'QInput',
         'QRadio',
         'QCheckbox',
-        'QExpansionItem'
+        'QExpansionItem',
+        'QImg'
       ],
 
       directives: [

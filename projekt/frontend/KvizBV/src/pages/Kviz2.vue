@@ -6,42 +6,67 @@
     <div class="row">
       <div class="collumn">
         <div>
-          <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
+          <q-img
+            alt="slikaBiljke"
+            :src="slikeIzbor[0]"
+            spinner-color="white"
+            style="height: 400px; width: 400px; border-radius: 50%"
+          />
         </div>
         <div>
-          <q-radio v-model="radioS" val="Izbor 1" />
-        </div>
-      </div>
-      <div class="collumn">
-        <div>
-          <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
-        </div>
-        <div>
-          <q-radio v-model="radioS" val="Izbor 2" />
+          <q-radio v-model="radioSlike" val="Izbor 1" />
         </div>
       </div>
       <div class="collumn">
         <div>
-          <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
+          <q-img
+            alt="slikaBiljke"
+            :src="slikeIzbor[1]"
+            spinner-color="white"
+            style="height: 400px; width: 400px; border-radius: 50%"
+          />
         </div>
         <div>
-          <q-radio v-model="radioS" val="Izbor 3" />
-        </div>
-      </div>
-      <div class="collumn">
-        <div>
-          <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
-        </div>
-        <div>
-          <q-radio v-model="radioS" val="Izbor 4"/>
+          <q-radio v-model="radioSlike" val="Izbor 2" />
         </div>
       </div>
       <div class="collumn">
         <div>
-          <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
+          <q-img
+            alt="slikaBiljke"
+            :src="slikeIzbor[2]"
+            spinner-color="white"
+            style="height: 400px; width: 400px; border-radius: 50%"
+          />
         </div>
         <div>
-          <q-radio v-model="radioS" val="Izbor 5"/>
+          <q-radio v-model="radioSlike" val="Izbor 3" />
+        </div>
+      </div>
+      <div class="collumn">
+        <div>
+          <q-img
+            alt="slikaBiljke"
+            :src="slikeIzbor[3]"
+            spinner-color="white"
+            style="height: 400px; width: 400px; border-radius: 50%"
+          />
+        </div>
+        <div>
+          <q-radio v-model="radioSlike" val="Izbor 4"/>
+        </div>
+      </div>
+      <div class="collumn">
+        <div>
+          <q-img
+            alt="slikaBiljke"
+            :src="slikeIzbor[4]"
+            spinner-color="white"
+            style="height: 400px; width: 400px; border-radius: 50%"
+          />
+        </div>
+        <div>
+          <q-radio v-model="radioSlike" val="Izbor 5"/>
         </div>
       </div>
     </div>
@@ -52,10 +77,10 @@
         caption="Latinski naziv"
       >
         <q-list bordered padding class="rounded-borders">
-        <q-item-label header>Izaberi naziv</q-item-label>
+        <q-item-label header>Izaberi latinski naziv</q-item-label>
         <q-item v-for="vrsta in biljnevrste" :key="vrsta.id" class="q-my-sm" clickable v-ripple>
           <q-item-section>
-            <q-radio v-model="radioV" :val=vrsta.latinski_naziv />
+            <q-radio v-model="radioLatinskiNaziv" :val=vrsta.latinski_naziv />
           </q-item-section>
           <q-item-section>
             <q-item-label>
@@ -100,17 +125,16 @@ export default {
       links: ['kviz1', 'kviz2'],
       kvizLink: 'kviz1',
       hrvatskiNaziv: '',
-      radioS: '',
-      radioR: '',
-      radioV: '',
-      radioB: '',
+      radioSlike: '',
+      radioLatinskiNaziv: '',
       checkUD: [],
       textLN: '',
       textHN: '',
       rodovi: [],
       biljnevrste: [],
       uporabnidijelovi: [],
-      biljka: []
+      biljka: {},
+      slikeIzbor: []
     }
   },
   created () {
@@ -134,13 +158,34 @@ export default {
       this.$axios.get('http://193.198.97.14:8000/api/biljnevrste/?format=json')
         .then((response) => {
           this.biljnevrste = response.data
+          this.biljka = this.biljnevrste[Math.floor(Math.random() * this.biljnevrste.length)]
+          this.$axios.get(this.biljka.slika[Math.floor(Math.random() * this.biljka.slika.length)])
+            .then((response) => {
+              this.slikeIzbor.push(response.data.naziv_slike)
+              console.log(response)
+            })
+            .catch(error => {
+              console.log(error)
+            })
+          for (let i = 0; i < 4;) {
+            let randomBiljnaVrsta = Math.floor(Math.random() * this.biljnevrste.length)
+            this.$axios.get(this.biljnevrste[randomBiljnaVrsta].slika[Math.floor(Math.random() * this.biljnevrste[randomBiljnaVrsta].slika.length)])
+              .then((response) => {
+                if (!this.slikeIzbor.includes(response.data.naziv_slike)) {
+                  console.log(i)
+                  this.slikeIzbor.push(response.data.naziv_slike)
+                  i++
+                }
+                console.log(response)
+              })
+              .catch(error => {
+                console.log(error)
+              })
+          }
         })
         .catch(error => {
           console.log(error)
         })
-    },
-    randomBiljka () {
-      this.biljka = this.biljnevrste[Math.floor(Math.random() * this.biljnevrste.length)]
     },
     fetchUporabniDijelovi () {
       this.$axios.get('http://193.198.97.14:8000/api/uporabnidijelovi/?format=json')
@@ -154,9 +199,13 @@ export default {
   },
   randomLink (e, go) {
     e.navigate = false
-    // this.kvizLink = this.links[Math.floor(Math.random() * 2)]
+    this.kvizLink = this.links[Math.floor(Math.random() * 2)]
     setTimeout(() => {
-      go()
+      if (this.kvizLink === 'kviz1') {
+        window.location.reload()
+      } else {
+        go()
+      }
     }, 1)
   }
 }
