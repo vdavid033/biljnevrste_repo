@@ -1,4 +1,0 @@
-+ @babel/core@7.4.4
-updated 1 package and audited 21552 packages in 12.387s
-found 1 moderate severity vulnerability
-  run `npm audit fix` to fix them, or `npm audit` for details
