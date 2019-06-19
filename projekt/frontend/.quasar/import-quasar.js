@@ -13,7 +13,7 @@
 
 import Vue from 'vue'
 
-import {Quasar,QLayout,QHeader,QDrawer,QPageContainer,QPage,QToolbar,QToolbarTitle,QBtn,QIcon,QList,QItem,QItemSection,QItemLabel,QFooter,QPageScroller,QPageSticky,QFab,QFabAction,QBar,QTabPanels,QTabPanel,QTabs,QTab,QRouteTab,QInput,QCheckbox,QBtnDropdown,QRadio,QAvatar,QBadge,Ripple,Notify} from 'quasar'
+import {Quasar,QLayout,QHeader,QDrawer,QPageContainer,QPage,QToolbar,QToolbarTitle,QBtn,QIcon,QList,QItem,QItemSection,QItemLabel,QFooter,QPageScroller,QPageSticky,QFab,QFabAction,QBar,QTabPanels,QTabPanel,QTabs,QTab,QRouteTab,QInput,QCheckbox,QBtnDropdown,QRadio,QAvatar,QBadge,QImg,Ripple,Notify} from 'quasar'
 
 
-Vue.use(Quasar, { config: {},components: {QLayout,QHeader,QDrawer,QPageContainer,QPage,QToolbar,QToolbarTitle,QBtn,QIcon,QList,QItem,QItemSection,QItemLabel,QFooter,QPageScroller,QPageSticky,QFab,QFabAction,QBar,QTabPanels,QTabPanel,QTabs,QTab,QRouteTab,QInput,QCheckbox,QBtnDropdown,QRadio,QAvatar,QBadge},directives: {Ripple},plugins: {Notify} })
+Vue.use(Quasar, { config: {},components: {QLayout,QHeader,QDrawer,QPageContainer,QPage,QToolbar,QToolbarTitle,QBtn,QIcon,QList,QItem,QItemSection,QItemLabel,QFooter,QPageScroller,QPageSticky,QFab,QFabAction,QBar,QTabPanels,QTabPanel,QTabs,QTab,QRouteTab,QInput,QCheckbox,QBtnDropdown,QRadio,QAvatar,QBadge,QImg},directives: {Ripple},plugins: {Notify} })

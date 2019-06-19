@@ -70,7 +70,7 @@ const routes = [
       { path: '', component: () => import('pages/BiljneVrsteRod.vue') }
     ]
   },
- {
+  {
     path: '/prikaz',
     component: () => import('layouts/MyLayout.vue'),
     children: [

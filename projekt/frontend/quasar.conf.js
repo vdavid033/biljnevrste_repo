@@ -55,7 +55,8 @@ module.exports = function (ctx) {
         'QBtnDropdown',
         'QRadio',
         'QAvatar',
-        'QBadge'
+        'QBadge',
+        'QImg'
       ],
 
       directives: [

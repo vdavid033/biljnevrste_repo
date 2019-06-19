@@ -3,49 +3,63 @@
     <div class="q-pa-lg text-weight-bold q-display-2">
       Hrvatski Naziv
     </div>
-    <div class="q-pa-lg row">
+    <div class="q-pa-lg">
       <!--vd -->
-      <div class="col">
-        <q-list bordered padding class="rounded-borders" style="max-width: 300px">
-        <q-item-label header>Izaberi rod</q-item-label>
-        <q-item v-for="rod in rodovi" :key="rod.id" class="q-my-sm" clickable v-ripple>
-          <q-item-section>
-            <q-radio v-model="radioR" :val=rod.naziv_roda />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              <a :href=rod.url>
+      <!-- div class="col" -->
+        <q-list bordered padding class="rounded-borders">
+          <q-item-label header>Izaberi vrstu</q-item-label>
+          <q-item v-for="value in biljnevrste" :key="value.id" class="q-my-sm" clickable v-ripple>
+            <q-item-section>
+              <q-radio v-model="radioV" :val=value.hrvatski_naziv_vrste />
+            </q-item-section>
+            <q-item-section style="float-left">
+              <q-item-label>
+                <a :href=value.url>
+                {{ value.hrvatski_naziv_vrste }}
+                </a>
+              </q-item-label>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>
+                (lat. {{ value.latinski_naziv }})
+              </q-item-label>
+            </q-item-section>
+            <span v-for="rod in rodovi" :key="rod.id">
+              <div v-if="rod.url === value.ID_roda">
+              <br />
               {{ rod.naziv_roda }}
-              </a>
-            </q-item-label>
-          </q-item-section>
-        </q-item>
+              </div>
+            </span>
+            <span v-for="slika in slike" :key="slika.id">
+              <span v-for="slika1 in value.slika" :key="slika1.id">
+                <div v-if="slika.url === slika1" class="col-6">
+                <br />
+                <img :src=slika.naziv_slike style="width: 120px" />
+                </div>
+              </span>
+            </span>
+          </q-item>
         </q-list>
       </div>
-        <div class="col">
-        <q-list bordered padding class="rounded-borders">
-        <q-item-label header>Izaberi vrstu</q-item-label>
-        <q-item v-for="vrsta in biljnevrste" :key="vrsta.id" class="q-my-sm" clickable v-ripple>
-          <q-item-section>
-            <q-radio v-model="radioV" :val=vrsta.hrvatski_naziv_vrste />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              <a :href=vrsta.url>
-              {{ vrsta.hrvatski_naziv_vrste }}
-              </a>
-            </q-item-label>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              (lat. {{ vrsta.latinski_naziv }})
-            </q-item-label>
-          </q-item-section>
-        </q-item>
+      <div class="q-pa-lg col-6">
+        <q-list bordered padding class="rounded-borders" style="max-width: 300px">
+          <q-item-label header>Izaberi rod</q-item-label>
+          <q-item v-for="rod in rodovi" :key="rod.id" class="q-my-sm" clickable v-ripple>
+            <q-item-section>
+              <q-radio v-model="radioR" :val=rod.naziv_roda />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>
+                <a :href=rod.url>
+                {{ rod.naziv_roda }}
+                </a>
+              </q-item-label>
+            </q-item-section>
+            </q-item>
         </q-list>
       </div>
       <!-- end vd -->
-    </div>
+    <!-- /div -->
     <div class="q-pa-lg">
       Latinski naziv
       <q-input v-model="textLN" placeholder="Latinski naziv" />
@@ -121,13 +135,15 @@ export default {
       textLN: '',
       rodovi: [],
       biljnevrste: [],
-      uporabnidijelovi: []
+      uporabnidijelovi: [],
+      slike: []
     }
   },
   created () {
     this.fetchRodovi()
     this.fetchBiljneVrste()
     this.fetchUporabniDijelovi()
+    this.fetchSlike()
   },
   methods: {
     fetchRodovi () {
@@ -152,6 +168,24 @@ export default {
       this.$axios.get('http://193.198.97.14:8000/api/uporabnidijelovi/?format=json')
         .then((response) => {
           this.uporabnidijelovi = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    fetchSlike () {
+      this.$axios.get('http://193.198.97.14:8000/api/slike/?format=json')
+        .then((response) => {
+          this.slike = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    slikeZaVrstu (id) {
+      this.$axios.get('http://193.198.97.14:8000/api/slike/?format=json')
+        .then((response) => {
+          this.slikeZaVrstu = response.data === this.slike ? this.slike : null
         })
         .catch(error => {
           console.log(error)
