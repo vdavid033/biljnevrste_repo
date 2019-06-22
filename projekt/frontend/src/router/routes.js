@@ -64,6 +64,13 @@ const routes = [
     ]
   },
   {
+    path: '/pregled1',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Pregled-Fures1.vue') }
+    ]
+  },
+  {
     path: '/biljne',
     component: () => import('layouts/MyLayout.vue'),
     children: [
