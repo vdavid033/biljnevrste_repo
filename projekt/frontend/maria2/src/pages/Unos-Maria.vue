@@ -1,6 +1,8 @@
 <template>
     <q-page padding="">
-        <div class="row gutter-xs">
+      <div class="window-height window-width row justify-center items-center">
+      <q-list bordered padding class="rounded-borders" style="max-width: 1500px">
+        <div class="q-pa-lg row">
             <div class="col">
                 Hrvatski naziv:
                 <div>
@@ -14,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="row gutter-xs">
+        <div class="q-pa-lg row">
             <div class="col">
                 Latinski naziv:
                 <div>
@@ -49,17 +51,39 @@
             </div>
             <div class="col">
                 <div class="col">
-                Sistemtičari:
+                Sistemtičar:
                 <div>
                     <q-input outlined v-model="sistem" label="Sistematičar" />
                 </div>
             </div>
           </div>
           </div>
-            <div class="col">
+    <div class="q-pa-lg row">
+        <div class="col">
+          Izaberi botaničku porodicu:
+        <q-list bordered padding class="rounded-borders" style="max-width: 350px">
+        <q-item v-for="porodica in porodice" :key="porodica.id" class="q-my-sm" clickable v-ripple>
+          <q-item-section>
+            <q-radio v-model="radioV" :val=porodica.hrvatski_naziv_porodice />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>
+              {{ porodica.hrvatski_naziv_porodice }}
+            </q-item-label>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>
+              (lat. {{ porodica.latisnki_naziv_porodice }})
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+        </q-list>
+      </div>
+      <!-- end vd -->
+                  <div class="col">
                 Dodaj novu lat. kat.:
                 <div>
-                    <q-input outlined v-model="latkat" label="Lat. kategorija" />
+                    <q-input outlined v-model="latkat" label="Lat. kategorija"/>
                 </div>
             </div>
             <div class="col">
@@ -75,44 +99,11 @@
                   <q-btn round color="primary" label="+" text-color="black" @click="handleClick" />
               </div>
           </div>
-    <div class="q-pa-lg row">
-        <div class="col">
-        <q-list bordered padding class="rounded-borders">
-        <q-item-label header>Izaberi botaničku porodicu</q-item-label>
-        <q-item v-for="porodica in porodice" :key="porodica.id" class="q-my-sm" clickable v-ripple>
-          <q-item-section>
-            <q-radio v-model="radioV" :val=porodica.hrvatski_naziv_porodice />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              <a :href=porodica.url>
-              {{ porodica.hrvatski_naziv_porodice }}
-              </a>
-            </q-item-label>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>
-              (lat. {{ porodica.latisnki_naziv_porodice }})
-            </q-item-label>
-          </q-item-section>
-        </q-item>
-        </q-list>
-      </div>
-      <!-- end vd -->
     </div>
-        <div class="row gutter-xs">
-          <div class="col">
-              <div class="col">
-              Opis biljke:
-              <div>
-                  <q-input outlined v-model="opis" label="Opis" />
-              </div>
-          </div>
-          </div>
-        </div>
+        <div class="q-pa-lg row">
           <div class="col">
             <q-list bordered padding class="rounded-borders" style="max-width: 300px">
-            <q-item-label header>Uporabni dio</q-item-label>
+            <q-item-label header>Odaberi uporabni dio:</q-item-label>
             <q-item  v-for="dio in uporabnidijelovi" :key="dio.id" class="q-my-sm" clickable v-ripple>
               <q-item-section>
                 <q-radio v-model='radioU' :val=dio.naziv />
@@ -126,42 +117,72 @@
           <div class="col">
               Dodaj novi uporabni dio:
               <div>
-                  <q-input outlined v-model="uporab" label="Uporabni dio" />
+                  <q-input outlined v-model="uporab" label="Uporabni dio" style="max-width: 308px" />
               </div>
+              <q-list bordered padding class="rounded-borders" style="max-width: 308px">
+              <q-item-label header>Opis biljke:</q-item-label>
+              <div class="q-pa-md" style="max-width: 300px">
+                <q-input
+                  v-model="text"
+                  filled
+                  type="textarea"
+                />
+              </div>
+              </q-list>
           </div>
           <div class="col">
               <div>
                   <q-btn round color="primary" label="+" text-color="black" @click="handleClick" />
               </div>
           </div>
-        <div class="row gutter-xs">
-          <div class="col">
-              Učitavanje slika:
           </div>
-          <div class="col">
-              <div>
-                  <q-btn round color="primary" label="+" text-color="black" @click="handleClick" />
-                  <q-btn round color="primary" label="+" text-color="black" @click="handleClick" />
-                  <q-btn round color="primary" label="+" text-color="black" @click="handleClick" />
-                  <q-btn round color="primary" label="+" text-color="black" @click="handleClick" />
-                  <q-btn round color="primary" label="+" text-color="black" @click="handleClick" />
-                  <q-btn round color="primary" label="+" text-color="black" @click="handleClick" />
-              </div>
-          </div>
-        <div class="row gutter-xs">
-          <div class="col">
-              <div>
-                  <q-btn color="white" text-color="black" label="SPREMI" />
-              </div>
-              <div>
-              </div>
-          </div>
-        </div>
-        </div>
+        <div class="q-pa-lg row justify-center">
+    <div class="q-gutter-md">
+      Učitavanje slika:
+      <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" />
+            <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" />
+                  <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" />
+                        <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" />
+                              <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" />
+                                    <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" />
+                                    <q-btn color="primary" text-color="black" label="SPREMI"/>
+    </div>
+            </div>
+  <div class="q-pa-md">
+    <div class="q-gutter-md row">
+            Botanička porodica:
+      <q-select
+        filled
+        v-model="model"
+        use-input
+        hide-selected
+        fill-input
+        input-debounce="0"
+        :options="options"
+        @filter="filterFn"
+        hint="Odaberi"
+        style="width: 250px; padding-bottom: 32px"
+      >
+        <template v-slot:no-option>
+          <q-item>
+            <q-item-section class="text-grey">
+              No results
+            </q-item-section>
+          </q-item>
+        </template>
+      </q-select>
+    </div>
+  </div>
+  </q-list>
+  </div>
     </q-page>
 </template>
 
 <script>
+
+const stringOptions = [
+  'porodica1', 'porodica2', 'porodica3', 'porodica4', 'porodica5'
+]
 
 export default {
   data () {
@@ -176,7 +197,6 @@ export default {
       sistematicar: '',
       latkat: '',
       hrvkat: '',
-      bioaktv: '',
       uporab: '',
       opis: '',
       text: '',
@@ -189,7 +209,9 @@ export default {
       radioB: '',
       textLN: '',
       porodice: [],
-      uporabnidijelovi: []
+      uporabnidijelovi: [],
+      model: null,
+      options: stringOptions
     }
   },
   methods: {
@@ -218,6 +240,12 @@ export default {
   created () {
     this.fetchPorodice()
     this.fetchUporabniDijelovi()
+  },
+  filterFn (val, update, abort) {
+    update(() => {
+      const needle = val.toLowerCase()
+      this.options = stringOptions.filter(v => v.toLowerCase().indexOf(needle) > -1)
+    })
   }
 }
 </script>
