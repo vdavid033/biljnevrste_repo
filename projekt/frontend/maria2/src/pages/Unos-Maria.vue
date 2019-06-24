@@ -1,7 +1,7 @@
 <template>
     <q-page padding="">
       <div class="window-height window-width row justify-center items-center">
-      <q-list bordered padding class="rounded-borders" style="max-width: 1500px">
+      <q-list bordered padding class="rounded-borders" style="width: 1300px">
         <div class="q-pa-lg row">
             <div class="col">
                 Hrvatski naziv:
@@ -96,7 +96,7 @@
             </div>
           <div class="col">
               <div>
-                  <q-btn round color="primary" label="+" text-color="black" @click="handleClick" />
+                  <q-btn round color="primary" label="+" text-color="black" @click="dodajKategoriju" />
               </div>
           </div>
     </div>
@@ -132,20 +132,20 @@
           </div>
           <div class="col">
               <div>
-                  <q-btn round color="primary" label="+" text-color="black" @click="handleClick" />
+                  <q-btn round color="primary" label="+" text-color="black" @click="dodajUporabnidio"/>
               </div>
           </div>
           </div>
         <div class="q-pa-lg row justify-center">
     <div class="q-gutter-md">
       Učitavanje slika:
-      <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" />
-            <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" />
-                  <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" />
-                        <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" />
-                              <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" />
-                                    <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" />
-                                    <q-btn color="primary" text-color="black" label="SPREMI"/>
+      <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" @click="$router.push('/unosslike')"/>
+            <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" @click="$router.push('/unosslike')"/>
+                  <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" @click="$router.push('/unosslike')"/>
+                        <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" @click="$router.push('/unosslike')"/>
+                              <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" @click="$router.push('/unosslike')"/>
+                                    <q-btn round color="primary" label="+" text-color="black" :key="`md-${n}`" @click="$router.push('/unosslike')"/>
+                                    <q-btn color="primary" text-color="black" label="SPREMI" @click="spremi"/>
     </div>
             </div>
   <div class="q-pa-md">
@@ -215,9 +215,6 @@ export default {
     }
   },
   methods: {
-    onItemClick () {
-      console.log('Clicked on an Item')
-    },
     fetchPorodice () {
       this.$axios.get('http://193.198.97.14:8000/api/porodice/?format=json')
         .then((response) => {
@@ -247,5 +244,8 @@ export default {
       this.options = stringOptions.filter(v => v.toLowerCase().indexOf(needle) > -1)
     })
   }
+  // dodajKategoriju
+  // dodajUporabnidio
+  // spremi
 }
 </script>
