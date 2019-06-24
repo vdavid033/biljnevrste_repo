@@ -52,6 +52,8 @@ ID_roda - PK, samonumeriranje(12)
 
 Naziv_roda - Tekst(30)
 
+ID_porodice - FK, broj(12)
+
 ## Porodica
 
 ID_porodice - PK, samonumeriranje, broj(12)  
@@ -59,8 +61,6 @@ ID_porodice - PK, samonumeriranje, broj(12)
 Hrvatski_naziv_porodice - Tekst(100)  
 
 Latinski_naziv_porodice - Tekst(100)  
-
-ID_roda - FK, broj(12)
 
 ## Sistematicar
 
