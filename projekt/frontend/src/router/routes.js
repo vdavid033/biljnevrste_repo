@@ -22,6 +22,20 @@ const routes = [
     ]
   },
   {
+    path: '/unos1',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Unos-Maria-1.vue') }
+    ]
+  },
+  {
+    path: '/unosslike',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Unosslike.vue') }
+    ]
+  },
+  {
     path: '/kviz',
     component: () => import('layouts/MyLayout.vue'),
     children: [
