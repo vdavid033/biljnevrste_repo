@@ -43,9 +43,9 @@ OPIS BILJKE:
   </div>
 
   <div>
-     <q-btn color="blue" text-color="black" class="absolute" style="right: 0; right: 200px; transform: translateY(50%);" label="Izbriši" />
+     <q-btn color="blue" text-color="black" class="absolute" style="right: 0; right: 200px; transform: translateY(50%);" label="Izbriši" @click="deleteBiljka" />
       <q-btn color="blue" text-color="black" class="absolute" style="right: 0; right: 100px; transform: translateY(50%);" label="Uredi" />
-    </div>
+      </div>
   </q-page>
 </template>
 
@@ -110,6 +110,24 @@ export default {
       this.$axios.get('http://193.198.97.14:8000/api/slike/?format=json')
         .then((response) => {
           this.slika = response.data
+        })
+        .catch(() => {
+          this.$q.notify({
+            message: 'Loading failed'
+          })
+        })
+    },
+
+    update (biljka) {
+
+    },
+
+    deleteBiljka () {
+      // const url = `${API_URL}/api/contacts/${contact.pk}`;
+      // this.$axios.delete(this.vrsta.url+'?format=json')
+      this.$axios.delete('http://193.198.97.14:8000/api/slike/11/?format=json')
+        .then((response) => {
+          console.log(response)
         })
         .catch(() => {
           this.$q.notify({
