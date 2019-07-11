@@ -4,10 +4,10 @@
       </div>
         <div class="row space-between">
             <div clas="col-6" style="width: 45%; margin-right: 5%;">
-                    <q-input outlined v-model="text" label="Hrvatski naziv" :dense="dense" />
+                    <q-input outlined v-model="hrnaziv" label="Hrvatski naziv" :dense="dense" />
             </div>
             <div class="col-6" style="width: 45%; margin-left: 5%;">
-                <q-input outlined v-model="text" label="Sinonim" :dense="dense" />
+                <q-input outlined v-model="sinonim" label="Sinonim" :dense="dense" />
             </div>
         </div>
         <div class="row space-between" style="font-size: 1.2em;">
@@ -15,21 +15,21 @@
         </div>
         <div class="row space-between">
             <div class="col-4" style="width: 30%; margin-right: 5%;">
-                <q-input outlined v-model="text" label="Rod" :dense="dense" />
+                <q-input outlined v-model="rod" label="Rod" :dense="dense" />
             </div>
             <div class="col-4" style="width: 30%; margin-right: 5%;">
-                <q-input outlined v-model="text" label="Vrsta" :dense="dense" />
+                <q-input outlined v-model="vrsta" label="Vrsta" :dense="dense" />
             </div>
             <div class="col-4" style="width: 30%;">
-                <q-input outlined v-model="text" label="Podvrsta - SSP." :dense="dense" />
+                <q-input outlined v-model="podvrsta" label="Podvrsta - SSP." :dense="dense" />
             </div>
         </div>
         <div class="row space-between">
             <div class="col-6" style="width: 45%; margin-right: 5%;">
-               <q-input outlined v-model="text" label="Varijetet" :dense="dense" />
+               <q-input outlined v-model="varijetet" label="Varijetet" :dense="dense" />
             </div>
             <div class="col-6" style="width: 45%; margin-left: 5%;">
-                <q-input outlined v-model="text" label="Sistematičar" :dense="dense" />
+                <q-input outlined v-model="sistematicar" label="Sistematičar" :dense="dense" />
           </div>
           </div>
         <div class="row" style="padding-bottom: 3.5%;">
@@ -64,7 +64,7 @@
                     <q-item-label header>Odaberi botaničku porodicu:</q-item-label>
                   <q-item v-for="porodica in porodice" :key="porodica.id" class="q-my-sm" clickable v-ripple>
                     <q-item-section>
-                      <q-radio v-model="radioV" :val=porodica.hrvatski_naziv_porodice />
+                      <q-radio v-model="hrvkat" :val=porodica.hrvatski_naziv_porodice />
                     </q-item-section>
                     <q-item-section>
                       <q-item-label>
@@ -99,10 +99,10 @@
            <div class="col-8">
              <div class="row space-between" style="padding-bottom: 3.5%;">
             <div class="col-4" style="font-size: 1.2em; width: 35%; margin-right: 5%;">
-                <q-input outlined v-model="text" label="Dodaj novu lat. kat." :dense="dense" />
+                <q-input outlined v-model="latkat" label="Dodaj novu lat. kat." :dense="dense" />
             </div>
             <div class="col-4" style="font-size: 1.2em; width: 35%; margin-right: 5%;">
-                <q-input outlined v-model="text" label="Dodaj novu hrv. kat." :dense="dense" />
+                <q-input outlined v-model="hrvkat" label="Dodaj novu hrv. kat." :dense="dense" />
             </div>
           <div class="col-4" style="font-size: 1.2em; width: 2%; margin: auto;">
               <div style="display: flex; justify-content: center;">

@@ -41,6 +41,20 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/unos.vue') }
     ]
+  },
+  {
+    path: '/kviz1',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/kviz1.vue') }
+    ]
+  },
+  {
+    path: '/kviz2',
+    component: () => import('layouts/MyLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/kviz2.vue') }
+    ]
   }
 ]
 
